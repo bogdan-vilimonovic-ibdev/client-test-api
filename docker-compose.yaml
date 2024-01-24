@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  api:
+    environment:
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    container_name: client-test-api
+    network_mode: host
