@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.5/axios.min.js"></script>
+  </head>
+  <body></body>
+  <script>
+    const getGame = async () => {
+      const getGameResponse = await axios.get(
+        'http://localhost:3002/open-game/plinko',
+      );
+
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('src', getGameResponse.data);
+      iframe.style.width = `${window.innerWidth}px`;
+      iframe.style.height = `${window.innerHeight}px`;
+      document.body.appendChild(iframe);
+    };
+
+    getGame();
+  </script>
+</html>
