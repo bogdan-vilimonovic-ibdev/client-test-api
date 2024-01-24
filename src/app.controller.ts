@@ -17,19 +17,26 @@ const testUser = {
 export class AppController {
   constructor(private readonly apiService: ApiService) {}
 
+  @Get('/ping')
+  getHello(): string {
+    return 'Pong!';
+  }
+
   @Get('/open-game/plinko')
-  async getHello(): Promise<object> {
+  async openGame(): Promise<object> {
     const getGameResponse = await this.apiService.post(
-      'http://localhost:3000/integration/open-game/plinko',
+      'https://casino-games-api.pulsar.bet/integration/open-game/plinko',
       '',
       {
         playerId: testUser.id,
         brandId: 5,
         token: '123456',
-        homeUrl: 'http://127.0.0.1:5500/client-test-api/index.html',
+        homeUrl:
+          'https://client-test-api.pulsar.bet/client-test-api/index.html',
         language: 'en',
         ip: '123.1.1.1',
-        walletUrl: 'http://127.0.0.1:5500/client-test-api/index.html',
+        walletUrl:
+          'https://client-test-api.pulsar.bet/client-test-api/index.html',
         currency: testUser.currency,
         country: testUser.country,
         balance: testUser.balance,
